@@ -12,6 +12,7 @@ type InputData = {
   yarnUsed: number;
   accessoryCost: number;
   miscCost: number;
+  profit: number;
 };
 
 const App: React.FC = () => {
@@ -19,6 +20,8 @@ const App: React.FC = () => {
     totalCost: 0,
     materialCost: 0,
     laborCost: 0,
+    profit: 0,
+    sellingPrice: 0,
   });
 
   const handleCalculation = (inputData: InputData) => {

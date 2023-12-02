@@ -8,6 +8,7 @@ type InputData = {
   yarnUsed: number;
   accessoryCost: number;
   miscCost: number;
+  profitPercentage: number;
 };
 
 type InputFormProps = {
@@ -22,6 +23,7 @@ const InputForm: React.FC<InputFormProps> = ({ onSubmit }) => {
   const [yarnUsed, setYarnUsed] = useState("");
   const [accessoryCost, setAccessoryCost] = useState("");
   const [miscCost, setMiscCost] = useState("");
+  const [profitPercentage, setProfitPercentage] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,6 +35,7 @@ const InputForm: React.FC<InputFormProps> = ({ onSubmit }) => {
       yarnUsed: parseFloat(yarnUsed) || 0,
       accessoryCost: parseFloat(accessoryCost) || 0,
       miscCost: parseFloat(miscCost) || 0,
+      profitPercentage: parseFloat(profitPercentage) || 0,
     });
   };
 
@@ -79,6 +82,12 @@ const InputForm: React.FC<InputFormProps> = ({ onSubmit }) => {
         placeholder="Miscellaneous Cost"
         value={miscCost}
         onChange={(e) => setMiscCost(e.target.value)}
+      />
+      <input
+        type="number"
+        placeholder="How much profit in %"
+        value={profitPercentage}
+        onChange={(e) => setProfitPercentage(e.target.value)}
       />
       <button type="submit">Calculate Cost</button>
     </form>

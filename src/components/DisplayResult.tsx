@@ -5,15 +5,23 @@ type DisplayResultProps = {
     totalCost: number;
     materialCost: number;
     laborCost: number;
+    profitPercentage: number;
+    sellingPrice: number;
   };
 };
 
 const DisplayResult: React.FC<DisplayResultProps> = ({ result }) => {
+  console.log(result);
   return (
     <div>
       <div>Total Cost: €{result.totalCost.toFixed(2)}</div>
       <div>Material Cost: €{result.materialCost.toFixed(2)}</div>
       <div>Labor Cost: €{result.laborCost.toFixed(2)}</div>
+      {result.profitPercentage && (
+        <div>Profit %{result.profitPercentage.toFixed(2)}</div>
+      )}
+
+      <div>Final Selling Price: €{result.sellingPrice.toFixed(2)}</div>
     </div>
   );
 };

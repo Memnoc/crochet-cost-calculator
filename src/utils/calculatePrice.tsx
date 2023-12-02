@@ -6,6 +6,7 @@ type InputData = {
   yarnUsed: number;
   accessoryCost: number;
   miscCost: number;
+  profitPercentage: number;
 };
 
 export const calculatePrice = ({
@@ -16,15 +17,20 @@ export const calculatePrice = ({
   yarnUsed,
   accessoryCost,
   miscCost,
+  profitPercentage,
 }: InputData): {
   totalCost: number;
   materialCost: number;
   laborCost: number;
+  profitPercentage: number;
+  sellingPrice: number;
 } => {
   const materialCost =
     yarnBallWeight > 0 ? (yarnBallPrice / yarnBallWeight) * yarnUsed : 0;
   const laborCost = (hourlyRate / 60) * timeTaken;
   const totalCost = materialCost + laborCost + accessoryCost + miscCost;
-
-  return { totalCost, materialCost, laborCost };
+  profitPercentage = !isNaN(profitPercentage) ? profitPercentage : 0;
+  const profit = (totalCost * profitPercentage) / 100;
+  const sellingPrice = totalCost + profit;
+  return { totalCost, materialCost, laborCost, sellingPrice, profitPercentage };
 };
