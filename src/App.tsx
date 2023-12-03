@@ -2,18 +2,8 @@ import React, { useState } from "react";
 import InputForm from "./components/InputForm";
 import DisplayResult from "./components/DisplayResult";
 import { calculatePrice } from "./utils/calculatePrice";
+import { InputData } from "./types/types.ts";
 import "./App.css";
-
-type InputData = {
-  timeTaken: number;
-  hourlyRate: number;
-  yarnBallWeight: number;
-  yarnBallPrice: number;
-  yarnUsed: number;
-  accessoryCost: number;
-  miscCost: number;
-  profit: number;
-};
 
 const App: React.FC = () => {
   const [result, setResult] = useState({
@@ -22,6 +12,7 @@ const App: React.FC = () => {
     laborCost: 0,
     profit: 0,
     sellingPrice: 0,
+    profitPercentage: 0,
   });
 
   const handleCalculation = (inputData: InputData) => {

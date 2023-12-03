@@ -1,13 +1,4 @@
-type InputData = {
-  timeTaken: number;
-  hourlyRate: number;
-  yarnBallWeight: number;
-  yarnBallPrice: number;
-  yarnUsed: number;
-  accessoryCost: number;
-  miscCost: number;
-  profitPercentage: number;
-};
+import { InputData } from "../types/types.ts";
 
 export const calculatePrice = ({
   timeTaken,
@@ -24,6 +15,7 @@ export const calculatePrice = ({
   laborCost: number;
   profitPercentage: number;
   sellingPrice: number;
+  profit: number;
 } => {
   const materialCost =
     yarnBallWeight > 0 ? (yarnBallPrice / yarnBallWeight) * yarnUsed : 0;
@@ -32,5 +24,12 @@ export const calculatePrice = ({
   profitPercentage = !isNaN(profitPercentage) ? profitPercentage : 0;
   const profit = (totalCost * profitPercentage) / 100;
   const sellingPrice = totalCost + profit;
-  return { totalCost, materialCost, laborCost, sellingPrice, profitPercentage };
+  return {
+    totalCost,
+    materialCost,
+    laborCost,
+    sellingPrice,
+    profitPercentage,
+    profit,
+  };
 };

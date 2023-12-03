@@ -1,15 +1,5 @@
 import React, { useState } from "react";
-
-type InputData = {
-  timeTaken: number;
-  hourlyRate: number;
-  yarnBallWeight: number;
-  yarnBallPrice: number;
-  yarnUsed: number;
-  accessoryCost: number;
-  miscCost: number;
-  profitPercentage: number;
-};
+import { InputData } from "../types/types.ts";
 
 type InputFormProps = {
   onSubmit: (data: InputData) => void;
